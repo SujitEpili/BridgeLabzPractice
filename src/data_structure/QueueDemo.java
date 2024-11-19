@@ -21,14 +21,14 @@ class Queue<T>
 		System.out.println(data +" added in your queue");
 	}
 	
-	void remove()
+	void poll()
 	{
 		if(front == null)
 		{
 			System.out.println("There are no elements present inside your queue to remove !!!");
 		}else
 		{
-			System.out.println("Element " + front.data + " is removed");
+			System.out.println("Element " + front.data + " is polled");
 			front = front.next;			
 		}
 	}
@@ -68,12 +68,14 @@ class Queue<T>
 			System.out.println("Your queue is empty !!!");
 		}else
 		{
+			System.out.print("Elements of queue are : ");
 			Node<T> temp = front;
 			while(temp != null)
 			{
 				System.out.print(temp.data + " ");
 				temp = temp.next;
 			}
+			System.out.println();
 		}
 	}
 }
@@ -85,16 +87,18 @@ public class QueueDemo<T>
 		Queue<Integer> queue = new Queue<>();
 		queue.add(6);
 		queue.add(42);
+		queue.print();
 		queue.size();
 		queue.peek();
-		queue.remove();
+		queue.poll();
+		queue.print();
 		queue.peek();
 		queue.add(64);
 		queue.add(23);
 		queue.add(63);
+		queue.print();
 		queue.size();
 		queue.peek();
-		queue.print();
 	}
 
 }

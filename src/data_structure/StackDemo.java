@@ -36,7 +36,7 @@ class Stack<T>
 	{
 		System.out.println("The top element in Stack is : " + top.data);
 	}
-	
+		
 	void size()
 	{
 		int count = 0;
@@ -87,15 +87,19 @@ public class StackDemo
 		stack.push(3);
 		stack.push(12);
 		stack.push(31);
+		stack.print();
 		stack.pop();
+		stack.print();
 		stack.peek();
 		stack.isEmpty();
 		stack.size();
 		stack.push(53);
 		stack.push(15);
+		stack.print();
 		stack.peek();
 		stack.print();
 		stack.peek();
+		stack.print();
 		stack.isEmpty();
 		stack.size();
 	}

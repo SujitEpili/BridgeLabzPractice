@@ -20,6 +20,7 @@ class Graph<T>
 			GraphNode<T> newNode = new GraphNode<>();
 			newNode.data = data;
 			graph.put(data, new HashSet<>());
+			System.out.println("Vertex " + data + " added in graph");
 		}
 	}
 	
@@ -42,9 +43,40 @@ class Graph<T>
 		}
 	}
 	
+	void removeVertex(T data)
+	{
+		if(graph.get(data) == null)
+		{
+			System.out.println("Vertex " + data + " is not present inside graph !!!");
+		}else
+		{
+			graph.forEach((vertex, set) -> {
+				set.remove(data);
+			});
+			System.out.println("Vertex " + data + " is deleted from graph");
+			graph.remove(data);
+		}
+	}
+	
+	void removeEdge(T vertex1, T vertex2)
+	{
+		graph.forEach((vertex, set) -> {
+			if(graph.get(vertex1).contains(vertex2) && graph.get(vertex2).contains(vertex1))
+			{
+				graph.get(vertex1).remove(vertex2);
+				graph.get(vertex2).remove(vertex1);
+				System.out.println("One edge is deleted between " + vertex1 + " and " + vertex2);
+			}
+		});
+	}
+	
 	void printGraph()
 	{
-		System.out.println(graph);
+		System.out.println();
+		graph.forEach((vertex, set) -> {
+			System.out.print("Vertex " + vertex + " is connected with ");
+			System.out.println(set);
+		});
 	}
 }
 
@@ -63,6 +95,18 @@ class GraphDemo
 		graph.addEdge(1,3);
 		graph.addEdge(2,4);
 		graph.addEdge(3,4);
+		
+		graph.printGraph();
+		
+		graph.addEdge(1,4);
+		
+		graph.printGraph();
+		
+		graph.removeEdge(1, 4);
+				
+		graph.printGraph();
+		
+		graph.removeVertex(3);
 		
 		graph.printGraph();
 	}
